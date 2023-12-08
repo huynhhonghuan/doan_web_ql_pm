@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//-------------------------------------Login--------------------------------------------//
+Route::get('/login', [LoginController::class, 'login'])->name('login');
+//-------------------------------------Login xử lý--------------------------------------------//
+Route::post('/login', [LoginController::class, 'login_xuly']);
+//-------------------------------------Logout--------------------------------------------//
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('home', [AdminController::class, 'home'])->name('home');
 });
