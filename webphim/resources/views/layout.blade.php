@@ -10,7 +10,6 @@
     <meta name="DC.language" scheme="utf-8" content="vi" />
     <meta name="language" content="Việt Nam">
 
-
     <link rel="shortcut icon"
         href="https://www.pngkey.com/png/detail/360-3601772_your-logo-here-your-company-logo-here-png.png"
         type="image/x-icon" />

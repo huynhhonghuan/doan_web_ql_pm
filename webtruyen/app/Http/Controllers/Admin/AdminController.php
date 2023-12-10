@@ -9,6 +9,7 @@ class AdminController extends Controller
 {
     public function home()
     {
-        return view('admin.home');
+        $title = 'Trang quản trị Admin';
+        return view('admin.home', compact('title'));
     }
 }

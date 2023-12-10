@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\QuocGiaController;
+use App\Http\Controllers\Admin\TruyenController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -17,7 +19,7 @@ use App\Http\Controllers\HomeController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin.users.login');
 });
 
 Auth::routes();
@@ -31,6 +33,11 @@ Route::post('/login', [LoginController::class, 'login_xuly']);
 //-------------------------------------Logout--------------------------------------------//
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    //home
     Route::get('home', [AdminController::class, 'home'])->name('home');
+    //danh mục truyện
+    Route::resource('truyen', TruyenController::class)->except('show');
+    //danh mục quốc gia
+    Route::resource('quocgia',QuocGiaController::class)->except('show');
 });

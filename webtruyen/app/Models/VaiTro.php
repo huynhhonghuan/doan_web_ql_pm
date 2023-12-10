@@ -10,8 +10,8 @@ class VaiTro extends Model
     use HasFactory;
     protected $table ='vaitro';
 
-    // protected $primaryKey = 'id';
-    // protected $keyType = 'string';
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
     // protected $hidden = ['ghichu'];
 
     protected $fillable=[
