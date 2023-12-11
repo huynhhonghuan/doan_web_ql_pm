@@ -10,6 +10,13 @@ class TheLoai extends Model
     use HasFactory;
     protected $table ='theloai';
 
+    protected $fillable=[
+        'tentheloai',
+        'slug',
+        'mota',
+        'khoa'
+    ];
+
     public function Truyen()
     {
         return $this->hasMany(Truyen::class,'theloai_id','id');
