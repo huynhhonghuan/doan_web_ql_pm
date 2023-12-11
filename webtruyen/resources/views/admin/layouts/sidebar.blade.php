@@ -78,53 +78,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-bars"></i>
-                        <p>
-                            Danh Mục Thể Loại
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('admin.theloai.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách thể loại</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.theloai.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm mới thể loại</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-bars"></i>
-                        <p>
-                            Danh Mục Tác GIả
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('admin.tacgia.index')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Danh sách tác giả</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.tacgia.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Thêm mới tác giả</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </nav>
     </div>

@@ -33,16 +33,20 @@ class QuocGiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(QuocGiaRequest $request)
+    public function store(Request $request)
     {
-        // $request->validate([
-        //     'tenquocgia' => 'required|string',
-        // ]);
-        if ($request->validated()) {
-            $slug = Str::slug($request->tenquocgia, '-');
-            //dd($request->validated());
-            QuocGia::create($request->validated() + ['slug' => $slug]);
-        }
+        $request->validate([
+            'tenquocgia' => 'required|string',
+        ]);
+
+        $slug = Str::slug($request->tenquocgia, '-');
+        $quocgia = QuocGia::create([
+            'tenquocgia' => $request->tenquocgia,
+            'slug' => $slug,
+            'mota' => $request->mota,
+            'khoa' => $request->khoa,
+        ]);
+
         return redirect()->route('admin.quocgia.index');
     }
 
@@ -61,7 +65,7 @@ class QuocGiaController extends Controller
     {
         //dd($quocgium);
         $title = 'Chỉnh sửa quốc gia';
-        $quocgia = $quocgium;
+        $quocgia=$quocgium;
         return view('admin.quocgia.edit', compact('quocgia', 'title'));
     }
 
