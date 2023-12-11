@@ -35,18 +35,10 @@ class QuocGiaController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'tenquocgia' => 'required|string',
-        ]);
-
-        $slug = Str::slug($request->tenquocgia, '-');
-        $quocgia = QuocGia::create([
-            'tenquocgia' => $request->tenquocgia,
-            'slug' => $slug,
-            'mota' => $request->mota,
-            'khoa' => $request->khoa,
-        ]);
-
+        if ($request->validated()) {
+            $slug = Str::slug($request->tenquocgia, '-');
+            QuocGia::create($request->validated() + ['slug' => $slug]);
+        }
         return redirect()->route('admin.quocgia.index');
     }
 
