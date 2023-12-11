@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\TacGiaController;
 use App\Http\Controllers\Admin\TheLoaiController;
 use App\Http\Controllers\Admin\TruyenController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Congtacvientruyen\CongTacVienTruyenController;
+use App\Http\Controllers\Congtacvientruyen\TruyenController as ctv_truyen;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
@@ -46,4 +49,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('theloai', TheLoaiController::class)->except('show');
     //tác giả
     Route::resource('tacgia', TacGiaController::class)->except('show');
+});
+
+Route::group(['prefix' => 'ctv', 'as' => 'ctv.'], function () {
+    //home ctv
+    Route::get('home', [CongTacVienTruyenController::class, 'home'])->name('home');
+    //danh mục truyện ctv
+    Route::resource('truyen', ctv_truyen::class)->except('show');
 });

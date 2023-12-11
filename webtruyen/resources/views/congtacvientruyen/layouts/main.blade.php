@@ -7,7 +7,7 @@
     <title>{{ $title }}</title>
 
     <!-- Google Font: Source Sans Pro -->
-    @include('admin.layouts.head')
+    @include('congtacvientruyen.layouts.head')
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -46,7 +46,7 @@
 
         <!-- Main Sidebar Container -->
 
-        @include('admin.layouts.sidebar')
+        @include('congtacvientruyen.layouts.sidebar')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -56,7 +56,7 @@
             <section class="content">
                 <div class="container-fluid">
                     <br>
-                    @include('admin.layouts.alert')
+                    @include('congtacvientruyen.layouts.alert')
                     <div class="row">
                         <!-- left column -->
                         <div class="col-md-12">
@@ -90,7 +90,7 @@
     <!-- ./wrapper -->
 
     <!-- jQuery -->
-    @include('admin.layouts.footer')
+    @include('congtacvientruyen.layouts.footer')
     <script>
         $(document).ready(function() {
             $('#tablephim').DataTable();
