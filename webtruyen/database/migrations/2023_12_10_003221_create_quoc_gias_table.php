@@ -16,11 +16,14 @@ return new class extends Migration
             $table->string('tenquocgia',100);
             $table->string('slug');
             $table->string('mota',255)->nullable();
-            $table->integer('khoa');
+            $table->integer('khoa')->default(1);
             $table->timestamps();
             $table->engine = 'InnoDB';
-
         });
+
+        DB::table('quocgia')->insert([
+            ['tenquocgia'=>'Việt Nam','slug'=>'viet-nam','mota'=>'Khu vực châu Á - Thái Bình Dương'],
+        ]);
     }
 
     /**

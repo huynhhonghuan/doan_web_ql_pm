@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\TacGiaController;
 use App\Http\Controllers\Admin\TheLoaiController;
 use App\Http\Controllers\Admin\TruyenController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Congtacvientruyen\CongTacVienTruyenController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
