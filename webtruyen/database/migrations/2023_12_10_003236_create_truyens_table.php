@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('tentruyen');
             $table->string('slug');
-            $table->integer('nxb')->nullable();
+            $table->string('nhomdich')->default('Không biết');
             $table->longText('mota');
             $table->string('hinhanh',255);
             $table->integer('khoa');
