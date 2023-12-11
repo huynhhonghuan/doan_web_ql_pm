@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\congtacvientruyen;
 
 use App\Http\Controllers\Controller;
 use App\Models\Truyen;
@@ -8,14 +8,14 @@ use Illuminate\Http\Request;
 
 class TruyenController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $title='Danh sách truyện';
         $danhsach=Truyen::orderby('id','ASC')->get();
-        return view('admin.truyen.index', compact('title','danhsach'));
+        return view('ctv.truyen.index', compact('title','danhsach'));
     }
 
     /**

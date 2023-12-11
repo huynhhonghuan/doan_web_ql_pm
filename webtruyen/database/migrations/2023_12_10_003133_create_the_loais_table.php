@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('theloai', function (Blueprint $table) {
             $table->id();
-            $table->string('tentheloai', 100);
+            $table->string('tentheloai',100);
             $table->string('slug');
-            $table->string('mota', 255)->nullable();
-            $table->integer('khoa')->default(1);
+            $table->string('mota',255)->nullable();
+            $table->integer('khoa');
             $table->timestamps();
             $table->engine = 'InnoDB';
+
         });
-        DB::table('theloai')->insert([
-            ['tentheloai' => 'Manga', 'slug' => 'manga', 'mota' => 'Thể loại Manga'],
-        ]);
     }
 
     /**

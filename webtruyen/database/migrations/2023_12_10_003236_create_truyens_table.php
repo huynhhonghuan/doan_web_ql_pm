@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('tentruyen');
             $table->string('slug');
-            $table->string('nhomdich')->default('Không biết');
+            $table->integer('nxb')->nullable();
             $table->longText('mota');
             $table->string('hinhanh',255);
-            $table->integer('khoa')->default(1);
+            $table->integer('khoa');
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

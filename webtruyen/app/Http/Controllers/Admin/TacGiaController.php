@@ -17,7 +17,6 @@ class TacGiaController extends Controller
     {
         $title = 'Danh sách Tác Giả';
         $danhsach = TacGia::orderby('id', 'ASC')->get();
-        dd($danhsach);
         return view('admin.tacgia.index', compact('title', 'danhsach'));
     }
 

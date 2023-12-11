@@ -8,11 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class TacGia extends Model
 {
     use HasFactory;
-    protected $table = 'tacgia';
+    protected $table ='tacgia';
 
-    // protected $primaryKey = 'id';
-
-    protected $fillable = [
+    protected $fillable=[
         'tentacgia',
         'slug',
         'mota',
@@ -21,6 +19,6 @@ class TacGia extends Model
 
     public function Truyen()
     {
-        return $this->hasMany(Truyen::class);
+        return $this->hasMany(Truyen::class,'tacgia_id','id');
     }
 }

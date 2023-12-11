@@ -4,42 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use App\Models\TacGia;
-use App\Models\QuocGia;
-use App\Models\TheLoai;
-use App\Models\TruyenChiTiet;
 
 class Truyen extends Model
 {
     use HasFactory;
-    protected $table = 'truyen';
-
-    protected $fillable = [
-        'tentruyen',
-        'slug',
-        'mota',
-        'khoa',
-        'hinhanh',
-        'theloai_id',
-        'tacgia_id',
-        'quocgia_id',
-    ];
+    protected $table ='truyen';
 
     public function QuocGia()
     {
-        return $this->belongsTo(QuocGia::class, 'quocgia_id', 'id');
+        return $this->belongsTo(QuocGia::class);
     }
     public function TacGia()
     {
-        return $this->belongsTo(TacGia::class, 'tacgia_id', 'id');
+        return $this->belongsTo(TacGia::class);
     }
     public function TheLoai()
     {
-        return $this->belongsTo(TheLoai::class, 'theloai_id', 'id');
+        return $this->belongsTo(TheLoai::class);
     }
     public function TruyenChiTiet()
     {
-        return $this->hasMany(TruyenChiTiet::class, 'truyen_id', 'id');
+        return $this->hasMany(TruyenChiTiet::class,'truyen_id','id');
     }
 }

@@ -16,13 +16,11 @@ return new class extends Migration
             $table->string('tentacgia',100);
             $table->string('slug');
             $table->string('mota',255)->nullable();
-            $table->integer('khoa')->default(1);
+            $table->integer('khoa');
             $table->timestamps();
             $table->engine = 'InnoDB';
+
         });
-        DB::table('tacgia')->insert([
-            ['tentacgia'=>'Youn In-Wan','slug'=>'youn-in-wan','mota'=>'Người nước tương chấm bánh bèo'],
-        ]);
     }
 
     /**
