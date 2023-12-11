@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class QuocGia extends Model
 {
     use HasFactory;
+
     protected $table ='quocgia';
 
     //Nếu một thuộc tính được gán giá trị và nó nằm trong $guarded, Laravel sẽ bỏ qua giá trị đó và không cập nhật thuộc tính trong cơ sở dữ liệu.
@@ -21,6 +22,7 @@ class QuocGia extends Model
         'khoa'
     ];
 
+    //
     public function Truyen()
     {
         return $this->hasMany(Truyen::class,'quocgia_id','id');
