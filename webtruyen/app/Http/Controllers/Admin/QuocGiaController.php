@@ -33,7 +33,7 @@ class QuocGiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(QuocGiaRequest $request)
     {
         if ($request->validated()) {
             $slug = Str::slug($request->tenquocgia, '-');
@@ -57,26 +57,23 @@ class QuocGiaController extends Controller
     {
         //dd($quocgium);
         $title = 'Chỉnh sửa quốc gia';
-        $quocgia=$quocgium;
+        $quocgia = $quocgium;
         return view('admin.quocgia.edit', compact('quocgia', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, QuocGia $quocgium)
+    public function update(QuocGiaRequest $request, QuocGia $quocgium)
     {
-        $request->validate([
-            'tenquocgia' => 'required|string',
-        ]);
+        // $request->validate([
+        //     'tenquocgia' => 'required|string',
+        // ]);
         //dd($quocgium);
-        $slug = Str::slug($request->tenquocgia, '-');
-        $quocgium->update([
-            'tenquocgia' => $request->tenquocgia,
-            'slug' => $slug,
-            'mota' => $request->mota,
-            'khoa' => $request->khoa,
-        ]);
+        if ($request->validated()) {
+            $slug = Str::slug($request->tenquocgia, '-');
+            $quocgium->update($request->validated() + ['slug' => $slug]);
+        }
 
         return redirect()->route('admin.quocgia.index');
     }
