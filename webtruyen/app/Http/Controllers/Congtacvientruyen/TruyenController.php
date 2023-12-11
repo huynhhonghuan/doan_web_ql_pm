@@ -15,7 +15,7 @@ class TruyenController extends Controller
     {
         $title='Danh sách truyện';
         $danhsach=Truyen::orderby('id','ASC')->get();
-        return view('admin.truyen.index', compact('title','danhsach'));
+        return view('ctv.truyen.index', compact('title','danhsach'));
     }
 
     /**
