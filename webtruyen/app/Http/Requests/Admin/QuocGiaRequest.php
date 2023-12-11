@@ -11,7 +11,7 @@ class QuocGiaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,8 @@ class QuocGiaRequest extends FormRequest
         switch($this->method()) {
             case 'POST' : {
                 return [
-                    'type' => 'required',
-                    'location' => 'required',
-                    'price' => 'required',
-                    'description' => 'required'
+                    'tenquocgia' => 'required',
+                    'mota' => 'required',
                 ];
             }
             case 'PUT':

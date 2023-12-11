@@ -39,5 +39,5 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     //danh mục truyện
     Route::resource('truyen', TruyenController::class)->except('show');
     //danh mục quốc gia
-    Route::resource('quocgia',QuocGiaController::class)->except('show');
+    Route::resource('quocgia', QuocGiaController::class)->except('show');
 });
