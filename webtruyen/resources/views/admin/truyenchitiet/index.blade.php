@@ -16,7 +16,7 @@
                 @foreach ($danhsach as $key => $truyenchitiet)
                     <tr>
                         <td>{{ $key + 1 }}</td>
-                        <td>{{ $truyenchitiet->tentruyen }}</td>
+                        <td>{{ $truyenchitiet->Truyen->tentruyen }}</td>
                         <td>{{ $truyenchitiet->hinhanh }}</td>
                         <td>{{ $truyenchitiet->chuong }}</td>
                         <td>{{ $truyenchitiet->updated_at }}</td>

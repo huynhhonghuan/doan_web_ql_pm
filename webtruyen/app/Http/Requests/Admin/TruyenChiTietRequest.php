@@ -25,7 +25,6 @@ class TruyenChiTietRequest extends FormRequest
             case 'POST':{
                 return [
                     'truyen_id' =>'required',
-                    'hinhanh' => 'image',
                     'chuong' =>'required'
                 ];
             }
@@ -33,7 +32,6 @@ class TruyenChiTietRequest extends FormRequest
             case 'PATCH':{
                 return [
                     'truyen_id' =>'required',
-                    'hinhanh' => 'image',
                     'chuong' =>'required'
                 ];
             }
