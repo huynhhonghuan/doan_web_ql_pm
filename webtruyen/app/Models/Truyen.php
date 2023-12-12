@@ -20,6 +20,7 @@ class Truyen extends Model
         'slug',
         'mota',
         'khoa',
+        'nhomdich',
         'hinhanh',
         'theloai_id',
         'tacgia_id',

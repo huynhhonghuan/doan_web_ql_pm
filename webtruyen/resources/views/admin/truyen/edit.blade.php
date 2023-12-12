@@ -2,7 +2,7 @@
 @section('head')
 @endsection
 @section('content')
-    <form action="{{ route('admin.truyen.update', [$truyen]) }}" method="post">
+    <form action="{{ route('admin.truyen.update', [$truyen]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
 
@@ -64,7 +64,7 @@
             <div class="form-group">
                 <label for="formFileLg" class="form-label">Hình ảnh</label>
                 <input class="form-control form-control-lg" id="formFileLg" name="hinhanh" type="file"
-                    value="{{$truyen->hinhanh }}">
+                    value="{{ old('hinhanh') }}">
             </div>
 
             <div class="form-group">
@@ -107,7 +107,7 @@
             </div>
 
             <div class="">
-                <button type="submit" class="btn btn-primary">Tạo truyện</button>
+                <button type="submit" class="btn btn-primary">Lưu truyện</button>
             </div>
         </div>
         @csrf
