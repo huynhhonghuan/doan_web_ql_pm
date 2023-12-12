@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nhomdich')->default('Không biết');
             $table->longText('mota');
             $table->string('hinhanh',255);
-            $table->integer('khoa');
+            $table->integer('khoa')->default(1);
             $table->timestamps();
             $table->engine = 'InnoDB';
         });

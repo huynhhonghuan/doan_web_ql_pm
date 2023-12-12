@@ -59,6 +59,30 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-bars"></i>
                         <p>
+                            Chi Tiết Truyện
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.truyenchitiet.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách chi tiết truyện</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('admin.truyenchitiet.create')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm mới chi tiết truyện</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-bars"></i>
+                        <p>
                             Danh Mục Quốc Gia
                             <i class="right fas fa-angle-left"></i>
                         </p>

@@ -11,6 +11,7 @@ use App\Http\Controllers\Congtacvientruyen\TruyenController as ctv_truyen;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Models\TruyenChiTiet;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,8 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::get('home', [AdminController::class, 'home'])->name('home');
     //danh mục truyện
     Route::resource('truyen', TruyenController::class)->except('show');
+    //chi tiết truyện
+    Route::resource('truyenchitiet', TruyenChiTiet::class)->except('show');
     //danh mục quốc gia
     Route::resource('quocgia', QuocGiaController::class)->except('show');
     //thể loại
