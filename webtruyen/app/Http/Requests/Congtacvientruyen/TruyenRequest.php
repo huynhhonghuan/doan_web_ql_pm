@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Congtacvientruyen;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -37,7 +37,7 @@ class TruyenRequest extends FormRequest
                     return [
                         'tentruyen' => 'required',
                         'mota' => 'required',
-                        'nhomdich' => 'string',
+                        'nhomdich',
                         'theloai_id' => 'required',
                         'tacgia_id' => 'required',
                         'quocgia_id' => 'required'
