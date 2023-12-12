@@ -13,7 +13,9 @@ class TruyenChiTietController extends Controller
      */
     public function index()
     {
-        //
+        $title ='Danh sách chi tiết truyện';
+        $danhsach = TruyenChiTiet::orderby('id','asc')->get();
+        return view('admin.truyenchitiet.index',compact('title',));
     }
 
     /**
