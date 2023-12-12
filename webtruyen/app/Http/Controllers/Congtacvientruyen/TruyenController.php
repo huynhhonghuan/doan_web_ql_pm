@@ -16,14 +16,14 @@ use Exception;
 
 class TruyenController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $title='Danh sách truyện';
-        $danhsach=Truyen::orderby('id','ASC')->get();
-        return view('congtacvientruyen.ctv_truyen.index', compact('title','danhsach'));
+        $title = 'Danh sách truyện';
+        $danhsach = Truyen::orderby('id', 'ASC')->get();
+        return view('congtacvientruyen.truyen.index', compact('title', 'danhsach'));
     }
 
     /**
@@ -35,7 +35,7 @@ class TruyenController extends Controller
         $quocgia = QuocGia::all();
         $tacgia = TacGia::all();
         $theloai = TheLoai::all();
-        return view('congtacvientruyen.ctv_truyen.create', compact('title', 'quocgia', 'tacgia', 'theloai'));
+        return view('congtacvientruyen.truyen.create', compact('title', 'quocgia', 'tacgia', 'theloai'));
     }
 
     /**
@@ -61,10 +61,10 @@ class TruyenController extends Controller
                 $file->move('image/truyen/' . $slug, $file_name);
             }
 
-            Truyen::create($request->validated() + ['slug' => $slug, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
+            Truyen::create($request->validated() + ['slug' => $slug, 'nhomdich' => $request->nhomdich, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
         }
 
-        return redirect()->route('ctv.truyen.index');
+        return redirect()->route('ctvt.truyen.index');
     }
 
     /**
@@ -84,7 +84,7 @@ class TruyenController extends Controller
         $quocgia = QuocGia::all();
         $tacgia = TacGia::all();
         $theloai = TheLoai::all();
-        return view('congtacvientruyen.ctv_truyen.edit', compact('truyen', 'title', 'quocgia', 'tacgia', 'theloai'));
+        return view('congtacvientruyen.truyen.edit', compact('truyen', 'title', 'quocgia', 'tacgia', 'theloai'));
     }
 
     /**
@@ -116,7 +116,7 @@ class TruyenController extends Controller
             //dd($request->nhomdich);
             $truyen->update($request->validated() + ['slug' => $slug, 'nhomdich' => $request->nhomdich, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
         }
-        return redirect()->route('ctv.truyen.index');
+        return redirect()->route('ctvt.truyen.index');
     }
 
     /**
@@ -131,6 +131,6 @@ class TruyenController extends Controller
         //xóa data trên db
         $truyen->delete();
 
-        return redirect()->route('ctv.truyen.index');
+        return redirect()->route('ctvt.truyen.index');
     }
 }

@@ -62,15 +62,16 @@ class LoginController extends Controller
             $user = User::with('getVaiTro')->where('id', Auth::user()->id)->get();
             $vaitro = $user[0]->getVaiTro[0]->id;
 
+            //dd($vaitro);
             //đăng nhập với quyền admin
             if($vaitro == 'admin'){
                 return redirect()->route('admin.home');
             }
-            elseif($vaitro == 'nd'){
+            else if($vaitro == 'nd'){
                 return redirect()->route('nguoidung.home');
             }
-            elseif($vaitro == 'ctvt'){
-                return redirect()->route('congtacvientruyen.home');
+            else if($vaitro == 'ctvt'){
+                return redirect()->route('ctvt.home');
             }
         }
         //tài khoản không hoạt động

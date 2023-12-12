@@ -1,5 +1,5 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <a href="{{route('ctv.home')}}" class="brand-link">
+    <a href="{{route('ctvt.home')}}" class="brand-link">
         <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">OkynaWa</span>
@@ -41,13 +41,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('ctv.truyen.index')}}" class="nav-link">
+                            <a href="{{route('ctvt.truyen.index')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Danh sách truyện</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('ctv.truyen.create')}}" class="nav-link">
+                            <a href="{{route('ctvt.truyen.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm mới truyện</p>
                             </a>

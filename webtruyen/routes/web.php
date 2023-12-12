@@ -40,6 +40,7 @@ Route::post('/login', [LoginController::class, 'login_xuly']);
 //-------------------------------------Logout--------------------------------------------//
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+//Admin
 Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
     //home
     Route::get('home', [AdminController::class, 'home'])->name('home');
@@ -55,9 +56,12 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
     Route::resource('tacgia', TacGiaController::class)->except('show');
 });
 
-Route::group(['prefix' => 'ctv', 'as' => 'ctv.'], function () {
-    //home ctv
+//Cộng tác viên truyện
+Route::group(['middleware' => 'auth', 'prefix' => 'ctvt', 'as' => 'ctvt.'], function () {
+    //home ctvt
     Route::get('home', [CongTacVienTruyenController::class, 'home'])->name('home');
     //danh mục truyện ctv
     Route::resource('truyen', ctv_truyen::class)->except('show');
 });
+
+//Người dùng

@@ -37,10 +37,10 @@
                         @endif
                         <td>{{ $truyen->updated_at }}</td>
                         <td>
-                            <a class="btn btn-primary btn-sm" href="{{ route('ctv.truyen.edit', [$truyen]) }}"><i
+                            <a class="btn btn-primary btn-sm" href="{{ route('ctvt.truyen.edit', [$truyen]) }}"><i
                                     class="fas fa-edit"></i></a>
                             <form onclick="return confirm('Bạn có muốn xóa không?');" class="d-inline-block"
-                                action="{{ route('ctv.truyen.destroy', [$truyen]) }}" method="post">
+                                action="{{ route('ctvt.truyen.destroy', [$truyen]) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i> </button>

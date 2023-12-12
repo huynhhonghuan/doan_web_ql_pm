@@ -2,7 +2,7 @@
 @section('head')
 @endsection
 @section('content')
-    <form action="{{ route('ctv.truyen.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('ctvt.truyen.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">

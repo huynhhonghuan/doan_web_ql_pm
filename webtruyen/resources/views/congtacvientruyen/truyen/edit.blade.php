@@ -2,7 +2,7 @@
 @section('head')
 @endsection
 @section('content')
-    <form action="{{ route('ctv.truyen.update', [$truyen]) }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('ctvt.truyen.update', [$truyen]) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
 
