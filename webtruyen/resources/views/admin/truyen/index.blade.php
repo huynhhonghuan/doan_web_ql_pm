@@ -1,6 +1,13 @@
 @extends('admin.layouts.main')
 @section('content')
-    <table class="table text-center">
+    <p class="mt-3">
+        <a href="{{route('admin.truyen.create')}}" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
+        <a href="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#importModal"><i
+                class="fa-light fa-upload"></i> Nhập từ Excel</a>
+        <a href="" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
+            ra Excel</a>
+    </p>
+    <table id="tabletruyen" class="table text-center p-1">
         <thead>
             <tr>
                 <th>STT</th>
@@ -14,7 +21,7 @@
                 <th>Mô Tả</th>
                 <th>Trạng thái</th>
                 <th>Thời gian cập nhật</th>
-                <th>&nbsp;</th>
+                <th>Chỉnh sửa</th>
             </tr>
         </thead>
         <tbody>
@@ -26,9 +33,9 @@
                         <td>{{ $truyen->slug }}</td>
                         <td>{{ $truyen->hinhanh }}</td>
                         <td>{{ $truyen->nhomdich }}</td>
-                        <td>{{ $truyen->TacGia->tentacgia}}</td>
-                        <td>{{ $truyen->TheLoai->tentheloai}}</td>
-                        <td>{{ $truyen->QuocGia->tenquocgia}}</td>
+                        <td>{{ $truyen->TacGia->tentacgia }}</td>
+                        <td>{{ $truyen->TheLoai->tentheloai }}</td>
+                        <td>{{ $truyen->QuocGia->tenquocgia }}</td>
                         <td>{{ $truyen->mota }}</td>
                         @if ($truyen->khoa == 1)
                             <td><span class="btn btn-success btn-xs">Có</span></td>

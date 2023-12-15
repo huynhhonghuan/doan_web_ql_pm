@@ -22,13 +22,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
 
-            if (Auth::guard($guard)->check()) {
+            if (Auth::guard($guard)->check() && Auth::user()->Check_Admin()) {
                 return redirect(RouteServiceProvider::ADMIN);
             }
-            if (Auth::guard($guard)->check() && $request->user()->Check_Nguoidung()) {
+            if (Auth::guard($guard)->check() && Auth::user()->Check_Nguoidung()) {
                 return redirect(RouteServiceProvider::NGUOIDUNG);
             }
-            if (Auth::guard($guard)->check() && $request->user()->Check_Congtacvientruyen()) {
+            if (Auth::guard($guard)->check() && Auth::user()->Check_Congtacvientruyen()) {
                 return redirect(RouteServiceProvider::CONGTACVIENTRUYEN);
             }
         }

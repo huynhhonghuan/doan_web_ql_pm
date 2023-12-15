@@ -1,6 +1,13 @@
 @extends('admin.layouts.main')
 @section('content')
-    <table class="table text-center">
+    <p class="mt-3">
+        <a href="" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
+        <a href="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#importModal"><i
+                class="fa-light fa-upload"></i> Nhập từ Excel</a>
+        <a href="" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
+            ra Excel</a>
+    </p>
+    <table id="tabletruyen" class="table text-center">
         <thead>
             <tr>
                 <th>STT</th>

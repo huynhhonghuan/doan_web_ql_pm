@@ -41,10 +41,12 @@ Route::post('/login', [LoginController::class, 'login_xuly']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //Admin
-Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    //home
+Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+
+    //home admin
+    Route::get('/', [AdminController::class, 'home'])->name('home');
     Route::get('home', [AdminController::class, 'home'])->name('home');
-    //danh mục truyện
+    //truyện
     Route::resource('truyen', TruyenController::class)->except('show');
     //chi tiết truyện
     Route::resource('truyenchitiet', TruyenChiTietController::class)->except('show');
@@ -57,11 +59,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin', 'as' => 'admin.'], fu
 });
 
 //Cộng tác viên truyện
-Route::group(['middleware' => 'auth', 'prefix' => 'ctvt', 'as' => 'ctvt.'], function () {
+Route::group(['middleware' => ['auth', 'ctvt'], 'prefix' => 'ctvt', 'as' => 'ctvt.'], function () {
+
     //home ctvt
+    Route::get('/', [CongTacVienTruyenController::class, 'home'])->name('home');
     Route::get('home', [CongTacVienTruyenController::class, 'home'])->name('home');
     //danh mục truyện ctv
     Route::resource('truyen', ctv_truyen::class)->except('show');
 });
 
 //Người dùng
+Route::group(['middleware' => ['auth', 'nguoidung'], 'prefix' => 'nguoidung', 'as' => 'nguoidung.'], function () {
+});

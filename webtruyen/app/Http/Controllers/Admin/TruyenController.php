@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\Admin\TruyenRequest;
+use App\Models\User_Truyen_Dang;
+use Illuminate\Support\Facades\Auth;
 
 class TruyenController extends Controller
 {
@@ -61,7 +63,13 @@ class TruyenController extends Controller
                 $file->move('image/truyen/' . $slug, $file_name);
             }
 
-            Truyen::create($request->validated() + ['slug' => $slug, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
+            Truyen::create($request->validated() + [
+                'slug' => $slug,
+                'nhomdich' => $request->nhomdich,
+                'hinhanh' => $file_name,
+                'khoa' => $request->khoa,
+                'user_id' => Auth::user()->id,
+            ]);
         }
 
         return redirect()->route('admin.truyen.index');

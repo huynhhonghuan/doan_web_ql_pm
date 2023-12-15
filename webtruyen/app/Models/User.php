@@ -21,6 +21,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
+        'sdt',
         'email',
         'password',
     ];
@@ -53,33 +55,31 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Models\VaiTro', 'user_vaitro', 'user_id', 'vaitro_id');
     }
 
-    //Kiểm tra tài khoản đăng nhập có phải là Admin
     public function Check_Admin(): bool
     {
-        $user =User::with('getVaiTro')->where('id', Auth::user()->id)->get();
-        $role = $user[0]->getVaiTro[0]->id;
-        if($role == "ad")
-            return true;
-        return false;
+        return in_array(
+            $this->getVaiTro[0]->id,
+            [
+                'admin',
+            ],
+        );
     }
-
-    //Kiểm tra tài khoản đăng nhập có phải là Cộng tác viên truyện
     public function Check_Congtacvientruyen(): bool
     {
-        $user =User::with('getVaiTro')->where('id', Auth::user()->id)->get();
-        $role = $user[0]->getVaiTro[0]->id;
-        if($role == "ctvt")
-            return true;
-        return false;
+        return in_array(
+            $this->getVaiTro[0]->id,
+            [
+                'ctvt',
+            ],
+        );
     }
-
-    //Kiểm tra tài khoản đăng nhập có phải là Người dùng
     public function Check_Nguoidung(): bool
     {
-        $user =User::with('getVaiTro')->where('id', Auth::user()->id)->get();
-        $role = $user[0]->getVaiTro[0]->id;
-        if($role == "nd")
-            return true;
-        return false;
+        return in_array(
+            $this->getVaiTro[0]->id,
+            [
+                'nguoidung',
+            ],
+        );
     }
 }

@@ -93,7 +93,35 @@
     @include('admin.layouts.footer')
     <script>
         $(document).ready(function() {
-            $('#tablephim').DataTable();
+            $('#tabletruyen').DataTable({
+                //disable sorting on last column
+                "columnDefs": [{
+                    "orderable": false,
+                    "targets": 5
+                }],
+                language: {
+                    //customize pagination prev and next buttons: use arrows instead of words
+                    'paginate': {
+                        'previous': '<span class="fa fa-chevron-left"></span>',
+                        'next': '<span class="fa fa-chevron-right"></span>'
+                    },
+                    //customize number of elements to be displayed
+                    "lengthMenu": 'Hiển thị <select>' +
+                        '<option value="10">10</option>' +
+                        '<option value="20">20</option>' +
+                        '<option value="30">30</option>' +
+                        '<option value="40">40</option>' +
+                        '<option value="50">50</option>' +
+                        '<option value="100">100</option>' +
+                        '<option value="-1">All</option>' +
+                        '</select> số lượng',
+
+                    "zeroRecords": "Nothing found - sorry",
+                    "info": "Hiển thị _START_ đến _END_ của _TOTAL_",
+                    "infoEmpty": "Hiển thị từ 0 đến 0 của 0",
+                    "search": "Tìm kiếm:",
+                }
+            });
         });
     </script>
 </body>

@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class TruyenController extends Controller
 {
@@ -22,7 +23,7 @@ class TruyenController extends Controller
     public function index()
     {
         $title = 'Danh sách truyện';
-        $danhsach = Truyen::orderby('id', 'ASC')->get();
+        $danhsach = Truyen::where('user_id', Auth::user()->id)->orderby('id', 'ASC')->get();
         return view('congtacvientruyen.truyen.index', compact('title', 'danhsach'));
     }
 
@@ -61,7 +62,13 @@ class TruyenController extends Controller
                 $file->move('image/truyen/' . $slug, $file_name);
             }
 
-            Truyen::create($request->validated() + ['slug' => $slug, 'nhomdich' => $request->nhomdich, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
+            Truyen::create($request->validated() + [
+                'slug' => $slug,
+                'nhomdich' => $request->nhomdich,
+                'hinhanh' => $file_name,
+                'khoa' => $request->khoa,
+                'user_id' => Auth::user()->id,
+            ]);
         }
 
         return redirect()->route('ctvt.truyen.index');

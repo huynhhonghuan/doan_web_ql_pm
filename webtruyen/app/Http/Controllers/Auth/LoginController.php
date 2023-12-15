@@ -44,7 +44,7 @@ class LoginController extends Controller
     //Gọi view đăng nhập
     public function login()
     {
-        return view('auth.login');
+        return view('admin.users.login');
     }
     public function login_xuly(Request $request)
     {
@@ -59,20 +59,21 @@ class LoginController extends Controller
         //tài khoản đang hoạt động
         if(Auth::attempt(['email' => $email, 'password' => $password, 'status'=>'active'])){
 
-            $user = User::with('getVaiTro')->where('id', Auth::user()->id)->get();
-            $vaitro = $user[0]->getVaiTro[0]->id;
-
-            //dd($vaitro);
             //đăng nhập với quyền admin
-            if($vaitro == 'admin'){
+            if(Auth::user()->Check_Admin())
+            {
                 return redirect()->route('admin.home');
             }
-            else if($vaitro == 'nd'){
-                return redirect()->route('nguoidung.home');
-            }
-            else if($vaitro == 'ctvt'){
+            //đăng nhập với quyền cộng tác viên truyện
+            else if(Auth::user()->Check_Congtacvientruyen())
+            {
                 return redirect()->route('ctvt.home');
             }
+            //đăng nhập vớí quyền người dùng
+            else if(Auth::user()->Check_Nguoidung()){
+                return redirect()->route('nguoidung.home');
+            }
+
         }
         //tài khoản không hoạt động
         else if(Auth::attempt(['email' => $email, 'password' => $password, 'status'=>'inactive'])){

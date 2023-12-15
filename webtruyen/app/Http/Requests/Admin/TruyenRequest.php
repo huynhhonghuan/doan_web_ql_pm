@@ -40,7 +40,7 @@ class TruyenRequest extends FormRequest
                         'nhomdich',
                         'theloai_id' => 'required',
                         'tacgia_id' => 'required',
-                        'quocgia_id' => 'required'
+                        'quocgia_id' => 'required',
                     ];
                 }
         }

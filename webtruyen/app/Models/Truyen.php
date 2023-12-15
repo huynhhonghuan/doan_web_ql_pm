@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\TacGia;
 use App\Models\QuocGia;
 use App\Models\TheLoai;
+use App\Models\User;
 use App\Models\TruyenChiTiet;
 
 class Truyen extends Model
@@ -25,6 +26,7 @@ class Truyen extends Model
         'theloai_id',
         'tacgia_id',
         'quocgia_id',
+        'user_id'
     ];
 
     public function QuocGia()
@@ -38,6 +40,10 @@ class Truyen extends Model
     public function TheLoai()
     {
         return $this->belongsTo(TheLoai::class, 'theloai_id', 'id');
+    }
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public function TruyenChiTiet()
     {

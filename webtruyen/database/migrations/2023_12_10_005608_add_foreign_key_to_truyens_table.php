@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('theloai_id')->constrained('theloai')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('tacgia_id')->constrained('tacgia')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('quocgia_id')->constrained('quocgia')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -27,6 +28,7 @@ return new class extends Migration
             $table->dropForeign('truyen_theloai_id_foreign');
             $table->dropForeign('truyen_tacgia_id_foreign');
             $table->dropForeign('truyen_quocgia_id_foreign');
+            $table->dropForeign('truyen_user_id_foreign');
         });
     }
 };
