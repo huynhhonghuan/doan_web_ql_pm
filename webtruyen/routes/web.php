@@ -46,8 +46,12 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
     //home admin
     Route::get('/', [AdminController::class, 'home'])->name('home');
     Route::get('home', [AdminController::class, 'home'])->name('home');
+
     //truyện
     Route::resource('truyen', TruyenController::class)->except('show');
+    Route::post('truyen/nhap',[TruyenController::class,'postNhap'])->name('truyen.nhap');
+    Route::get('truyen/xuat',[TruyenController::class,'getXuat'])->name('truyen.xuat');
+
     //chi tiết truyện
     Route::resource('truyenchitiet', TruyenChiTietController::class)->except('show');
     //danh mục quốc gia

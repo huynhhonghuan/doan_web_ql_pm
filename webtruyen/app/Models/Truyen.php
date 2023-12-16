@@ -29,6 +29,10 @@ class Truyen extends Model
         'user_id'
     ];
 
+    protected $attributes = [
+        'nhomdich' => 'Không biết',
+    ];
+
     public function QuocGia()
     {
         return $this->belongsTo(QuocGia::class, 'quocgia_id', 'id');

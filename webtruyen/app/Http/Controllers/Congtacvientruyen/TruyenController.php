@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\congtacvientruyen;
+namespace App\Http\Controllers\Congtacvientruyen;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Congtacvientruyen\TruyenRequest;
@@ -64,7 +64,7 @@ class TruyenController extends Controller
 
             Truyen::create($request->validated() + [
                 'slug' => $slug,
-                'nhomdich' => $request->nhomdich,
+                'nhomdich' => $request->nhomdich ?? 'Không biết',
                 'hinhanh' => $file_name,
                 'khoa' => $request->khoa,
                 'user_id' => Auth::user()->id,
@@ -121,7 +121,12 @@ class TruyenController extends Controller
                 $file->move('image/truyen/' . $slug, $file_name);
             }
             //dd($request->nhomdich);
-            $truyen->update($request->validated() + ['slug' => $slug, 'nhomdich' => $request->nhomdich, 'hinhanh' => $file_name, 'khoa' => $request->khoa]);
+            $truyen->update($request->validated() + [
+                'slug' => $slug,
+                'nhomdich' => $request->nhomdich ?? 'Không biết',
+                'hinhanh' => $file_name,
+                'khoa' => $request->khoa
+            ]);
         }
         return redirect()->route('ctvt.truyen.index');
     }

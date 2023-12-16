@@ -25,8 +25,7 @@ class TruyenRequest extends FormRequest
             case 'POST': {
                     return [
                         'tentruyen' => 'required',
-                        'mota' => 'required',
-                        'nhomdich',
+                        'mota' => 'nullable',
                         'theloai_id' => 'required',
                         'tacgia_id' => 'required',
                         'quocgia_id' => 'required',
@@ -36,8 +35,7 @@ class TruyenRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'tentruyen' => 'required',
-                        'mota' => 'required',
-                        'nhomdich',
+                        'mota' => 'nullable',
                         'theloai_id' => 'required',
                         'tacgia_id' => 'required',
                         'quocgia_id' => 'required'

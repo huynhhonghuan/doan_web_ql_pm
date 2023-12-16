@@ -7,7 +7,7 @@
         <div class="card-body">
             <div class="form-group">
                 <label>Tên truyện</label>
-                <input type="text" name="tentruyen" class="form-control" placeholder="Nhập tên truyện">
+                <input type="text" id="tentruyen" name="tentruyen" class="form-control" placeholder="Nhập tên truyện">
             </div>
             @error('tentruyen')
                 <p style="color: red">{{ $message }}</p>
@@ -23,6 +23,9 @@
                     @endforeach
                 </select>
             </div>
+            @error('tacgia_id')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
 
             <div class="form-group" data-select2-id="29">
                 <label>Tên thể loại</label>
@@ -34,6 +37,9 @@
                     @endforeach
                 </select>
             </div>
+            @error('theloai_id')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
 
             <div class="form-group" data-select2-id="29">
                 <label>Tên quốc gia</label>
@@ -45,24 +51,31 @@
                     @endforeach
                 </select>
             </div>
+            @error('quocgia_id')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
 
             <div class="form-group">
                 <label for="formFileLg" class="form-label">Hình ảnh</label>
-                <input class="form-control form-control-lg" id="formFileLg" name="hinhanh" type="file">
+                <input class="form-control form-control-lg" id="formFileLg" name="hinhanh" id="hinhanh" type="file">
             </div>
+
+            @error('hinhanh')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
 
             <div class="form-group">
                 <label>Mô Tả</label>
                 <textarea name="mota" id="description" class="form-control"></textarea>
             </div>
+            @error('description')
+                <div class="invalid-feedback"><strong>{{ $message }}</strong></div>
+            @enderror
 
             <div class="form-group">
                 <label>Tên nhóm dịch</label>
                 <input type="text" name="nhomdich" class="form-control" placeholder="Nhập tên nhóm dịch">
             </div>
-            @error('nhomdich')
-                <p style="color: red">{{ $message }}</p>
-            @enderror
 
             <div class="form-group">
                 <label>Kích Hoạt</label>
