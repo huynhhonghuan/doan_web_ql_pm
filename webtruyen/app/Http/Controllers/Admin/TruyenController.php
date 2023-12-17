@@ -16,6 +16,7 @@ use App\Http\Requests\Admin\TruyenRequest;
 use App\Imports\Admin\TruyenImport;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 class TruyenController extends Controller
 {
@@ -65,7 +66,7 @@ class TruyenController extends Controller
                 $file->move(public_path('image/truyen/' . $slug, $file_name));
             }
 
-           // dd($request->validated());
+            // dd($request->validated());
             Truyen::create($request->validated() + [
                 'slug' => $slug,
                 'nhomdich' => $request->nhomdich ?? 'Không biết',
@@ -150,11 +151,11 @@ class TruyenController extends Controller
         return redirect()->route('admin.truyen.index');
     }
 
+    //nhâp excel
     public function postNhap(Request $request)
     {
         Excel::import(new TruyenImport, $request->file('file_excel'));
 
-        //dd($request->file('hinhanh'));
         if ($file = $request->file('hinhanh')) {
 
             //$thumuc = [];
@@ -182,8 +183,35 @@ class TruyenController extends Controller
         return redirect()->route('admin.truyen.index');
     }
 
+    //xuất excel
     public function getXuat()
     {
         return Excel::download(new TruyenExport, 'danh-sach-truyen.xlsx');
+    }
+
+    //xuất tất cả hình ảnh ra file zip
+    public function getHinh()
+    {
+        $zip = new ZipArchive();
+        $file_name = 'truyen.zip';
+
+        //xóa thư mục truyen.zip nếu đã có trước đó
+        if (file_exists(public_path('image/truyen.zip')))
+            File::deleteDirectory(public_path('image/truyen.zip'));
+
+        $truyen = Truyen::all();
+        if ($zip->open(public_path('image/' . $file_name), ZipArchive::CREATE) === True) {
+
+            foreach ($truyen as $tr) {
+                $files = File::files(public_path('image/truyen/' . $tr->slug));
+
+                foreach ($files as $item) {
+                    $zip->addFile($item, basename($item));
+                }
+            }
+
+            $zip->close();
+        }
+        return response()->download(public_path('image/' . $file_name));
     }
 }

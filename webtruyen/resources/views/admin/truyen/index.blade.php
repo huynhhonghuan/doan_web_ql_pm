@@ -7,6 +7,8 @@
         </button>
         <a href="{{ route('admin.truyen.xuat') }}" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
             ra Excel</a>
+        <a href="{{ route('admin.truyen.hinh') }}" class="btn btn-danger"><i class="fa-light fa-download"></i> Xuất
+            ra hình ảnh</a>
     </p>
     <table id="tabletruyen" class="table text-center p-1">
         <thead>
@@ -83,7 +85,7 @@
                     <div class="modal-body">
                         <div class="mb-0">
                             <label for="hinhanh" class="form-label">Chọn các hình ảnh</label>
-                            <input type="file" class="form-control" id="hinhanh" name="hinhanh[]" required multiple/>
+                            <input type="file" class="form-control" id="hinhanh" name="hinhanh[]" required multiple />
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">

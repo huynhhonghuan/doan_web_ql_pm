@@ -51,6 +51,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
     Route::resource('truyen', TruyenController::class)->except('show');
     Route::post('truyen/nhap',[TruyenController::class,'postNhap'])->name('truyen.nhap');
     Route::get('truyen/xuat',[TruyenController::class,'getXuat'])->name('truyen.xuat');
+    Route::get('truyen/hinh',[TruyenController::class,'getHinh'])->name('truyen.hinh');
 
     //chi tiết truyện
     Route::resource('truyenchitiet', TruyenChiTietController::class)->except('show');
