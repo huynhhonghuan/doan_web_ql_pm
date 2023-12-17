@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('movies', function (Blueprint $table){
+        Schema::table('movie_genre', function (Blueprint $table){
             // $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('category_id')->constrained('categories')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('movie_id')->constrained('movies')->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('genre_id')->constrained('genres')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('country_id')->constrained('countries')->cascadeOnUpdate()->cascadeOnDelete();
+            //$table->foreignId('country_id')->constrained('countries')->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 

@@ -15,7 +15,6 @@
                 <th scope="col">Tags</th>
                 <th>Trạng Thái</th>
                 <th>Phim Hot</th>
-                <th>Số tập</th>
                 <th>Năm Phim</th>
                 <th>Ảnh Bìa</th>
                 {{-- <th>Thời gian cập nhật</th> --}}
@@ -30,7 +29,7 @@
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->Category->title }}</td>
                         <td>
-                            @foreach ($item->movie_genre as $gen)
+                            @foreach($item->movie_genre as $gen)  
                                 <span class="badge badge-dark"> {{ $gen->title }}</span>
                             @endforeach
                         </td>
@@ -61,15 +60,6 @@
                             <td><span class="btn btn-danger btn-xs">Không</span></td>
                         @endif
                         <td>
-                            @if ($item->episode_now == 0 && $item->episodes == 0)
-                                ??/?? tập
-                            @elseif($item->episodes == 0)
-                                {{ $item->episode_now }}/?? tập
-                            @else
-                                {{ $item->episode_now }}/{{ $item->episodes }} tập
-                            @endif
-                        </td>
-                        <td>
                             <select name="year" id="{{ $item->id }}" class="select-year">
                                 <script>
                                     var today = new Date();
@@ -94,8 +84,6 @@
                             <a onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-danger btn-sm"
                                 href="{{ route('admin.movie.delete', ['id' => $item->id]) }}"><i
                                     class="fas fa-trash"></i></a>
-                            <a class="btn btn-success btn-sm"
-                                href="{{ route('admin.episode.add', ['id' => $item->id]) }}"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 @endforeach
