@@ -1,7 +1,7 @@
 @extends('congtacvientruyen.layouts.main')
 @section('content')
     <p class="pt-3">
-        <a href="" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
+        <!-- <a href="" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a> -->
         <a href="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#importModal"><i
                 class="fa-light fa-upload"></i> Nhập từ Excel</a>
         <a href="" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất

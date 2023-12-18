@@ -1,7 +1,7 @@
 @extends('admin.layouts.main')
 @section('content')
     <p class="mt-3">
-        <a href="{{ route('admin.truyen.create') }}" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
+        <a href="{{ route('admin.truyen.create') }}" class="btn btn-warning"><i class="fa-light fa-plus"></i> Thêm mới</a>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
             Nhập từ Excel
         </button>
