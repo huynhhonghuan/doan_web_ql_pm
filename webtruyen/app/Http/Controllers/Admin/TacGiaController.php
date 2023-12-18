@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\Admin\TacGiaExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TacGiaRequest;
+use App\Imports\Admin\TacGiaImport;
 use App\Models\TacGia;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TacGiaController extends Controller
 {
@@ -84,5 +87,15 @@ class TacGiaController extends Controller
     {
         $tacgium->delete();
         return redirect()->route('admin.tacgia.index');
+    }
+    public function postNhap(Request $request)
+    {
+        Excel::import(new TacGiaImport, $request->file('file_excel'));
+        return redirect()->route('admin.tacgia.index');
+    }
+
+    public function getXuat()
+    {
+        return Excel::download(new TacGiaExport, 'tac-gia.xlsx');
     }
 }

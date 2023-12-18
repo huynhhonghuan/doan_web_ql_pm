@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Requests\Admin\QuocGiaRequest;
 
+use App\Imports\Admin\QuocGiaImport;
+use App\Exports\Admin\QuocGiaExport;
+
+use Maatwebsite\Excel\Facades\Excel;
+
 class QuocGiaController extends Controller
 {
     /**
@@ -85,5 +90,16 @@ class QuocGiaController extends Controller
     {
         $quocgium->delete();
         return redirect()->route('admin.quocgia.index');
+    }
+
+    public function postNhap(Request $request)
+    {
+        Excel::import(new QuocGiaImport, $request->file('file_excel'));
+        return redirect()->route('admin.quocgia.index');
+    }
+
+    public function getXuat()
+    {
+        return Excel::download(new QuocGiaExport, 'quoc-gia.xlsx');
     }
 }

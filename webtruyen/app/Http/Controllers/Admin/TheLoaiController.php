@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\Admin\TheLoaiExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TheLoaiRequest;
+use App\Imports\Admin\TheLoaiImport;
 use App\Models\TheLoai;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TheLoaiController extends Controller
 {
@@ -83,5 +86,15 @@ class TheLoaiController extends Controller
     {
         $theloai->delete();
         return redirect()->route('admin.theloai.index');
+    }
+    public function postNhap(Request $request)
+    {
+        Excel::import(new TheLoaiImport, $request->file('file_excel'));
+        return redirect()->route('admin.theloai.index');
+    }
+
+    public function getXuat()
+    {
+        return Excel::download(new TheLoaiExport, 'the-loai.xlsx');
     }
 }
