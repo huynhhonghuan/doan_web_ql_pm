@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
 
     //tài khoản
     Route::resource('taikhoan',TaiKhoanController::class)->except('show');
+    Route::get('taikhoan/xuat', [TaiKhoanController::class, 'getXuat'])->name('taikhoan.xuat');
+    Route::post('taikhoan/nhap', [TaiKhoanController::class, 'postNhap'])->name('taikhoan.nhap');
 
     //truyện
     Route::resource('truyen', TruyenController::class)->except('show');

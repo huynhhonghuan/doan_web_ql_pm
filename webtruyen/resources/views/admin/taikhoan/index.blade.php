@@ -5,7 +5,7 @@
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
             Nhập từ Excel
         </button>
-        <a href="#" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
+        <a href="{{ route('admin.taikhoan.xuat') }}" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
             ra Excel</a>
     </p>
     <table id="tabletruyen" class="table text-center">
@@ -58,7 +58,7 @@
         </tbody>
     </table>
 
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.taikhoan.nhap') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="modal fade" id="modal-default" style="display: none;" tabindex="-1" role="dialog"
             aria-labelledby="importModalLabel" aria-hidden="true">

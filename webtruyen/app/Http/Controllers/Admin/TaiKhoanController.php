@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\Admin\TaiKhoanExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\TaiKhoanRequest;
+use App\Imports\Admin\TaiKhoanImport;
 use App\Models\User;
 use App\Models\User_VaiTro;
 use App\Models\VaiTro;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-
+use Maatwebsite\Excel\Facades\Excel;
 
 class TaiKhoanController extends Controller
 {
@@ -109,5 +111,15 @@ class TaiKhoanController extends Controller
      */
     public function destroy(string $id)
     {
+    }
+
+    public function getXuat()
+    {
+        return Excel::download(new TaiKhoanExport, 'tai-khoan.xlsx');
+    }
+    public function postNhap(Request $request)
+    {
+        Excel::import(new TaiKhoanImport, $request->file('file_excel'));
+        return redirect()->route('admin.taikhoan.index');
     }
 }
