@@ -49,6 +49,6 @@ class TruyenExport implements FromCollection, WithHeadings, WithCustomStartCell,
     }
     public function startCell(): string
     {
-        return 'A6';
+        return 'A1';
     }
 }

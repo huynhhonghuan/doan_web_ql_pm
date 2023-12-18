@@ -24,6 +24,6 @@ class TacGiaImport implements ToModel, WithHeadingRow
     }
     public function headingRow(): int
     {
-        return 6;
+        return 1;
     }
 }

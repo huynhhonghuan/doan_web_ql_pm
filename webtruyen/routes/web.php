@@ -55,20 +55,24 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
 
     //chi tiết truyện
     Route::resource('truyenchitiet', TruyenChiTietController::class)->except('show');
+    Route::post('truyenchitiet/nhap', [TruyenChiTietController::class, 'postNhap'])->name('truyenchitiet.nhap'); //nhập excel
+    Route::get('truyenchitiet/xuat', [TruyenChiTietController::class, 'getXuat'])->name('truyenchitiet.xuat'); //xuất excel
+    Route::get('truyenchitiet/hinh', [TruyenChiTietController::class, 'getHinh'])->name('truyenchitiet.hinh'); //xuất hình file.zip
+
     //danh mục quốc gia
     Route::resource('quocgia', QuocGiaController::class)->except('show');
     Route::post('quocgia/nhap', [QuocGiaController::class, 'postNhap'])->name('quocgia.nhap'); //nhập excel
-    Route::get('quocgia/xuat', [QuocGiaController::class, 'getXuat'])->name('quocgia.xuat');//xuất excel
+    Route::get('quocgia/xuat', [QuocGiaController::class, 'getXuat'])->name('quocgia.xuat'); //xuất excel
 
     //thể loại
     Route::resource('theloai', TheLoaiController::class)->except('show');
     Route::post('theloai/nhap', [TheLoaiController::class, 'postNhap'])->name('theloai.nhap'); //nhập excel
-    Route::get('theloai/xuat', [TheLoaiController::class, 'getXuat'])->name('theloai.xuat');//xuất excel
+    Route::get('theloai/xuat', [TheLoaiController::class, 'getXuat'])->name('theloai.xuat'); //xuất excel
 
     //tác giả
     Route::resource('tacgia', TacGiaController::class)->except('show');
     Route::post('tacgia/nhap', [TacGiaController::class, 'postNhap'])->name('tacgia.nhap'); //nhập excel
-    Route::get('tacgia/xuat', [TacGiaController::class, 'getXuat'])->name('tacgia.xuat');//xuất excel
+    Route::get('tacgia/xuat', [TacGiaController::class, 'getXuat'])->name('tacgia.xuat'); //xuất excel
 });
 
 //Cộng tác viên truyện
