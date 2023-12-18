@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\QuocGiaController;
 use App\Http\Controllers\Admin\TacGiaController;
+use App\Http\Controllers\Admin\TaiKhoanController;
 use App\Http\Controllers\Admin\TheLoaiController;
 use App\Http\Controllers\Admin\TruyenChiTietController;
 use App\Http\Controllers\Admin\TruyenController;
@@ -46,6 +47,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
     //home admin
     Route::get('/', [AdminController::class, 'home'])->name('home');
     Route::get('home', [AdminController::class, 'home'])->name('home');
+
+    //tài khoản
+    Route::resource('taikhoan',TaiKhoanController::class)->except('show');
 
     //truyện
     Route::resource('truyen', TruyenController::class)->except('show');
