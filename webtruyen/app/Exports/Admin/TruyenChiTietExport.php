@@ -11,8 +11,8 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 class TruyenChiTietExport implements FromCollection, WithHeadings, WithCustomStartCell, WithMapping
 {
     /**
-    * @return \Illuminate\Support\Collection
-    */
+     * @return \Illuminate\Support\Collection
+     */
     public function collection()
     {
         return TruyenChiTiet::all();
