@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Imports\Admin;
+namespace App\Imports\Congtacvientruyen;
 
 use App\Models\TruyenChiTiet;
 use Maatwebsite\Excel\Concerns\ToModel;

@@ -1,13 +1,13 @@
-@extends('admin.layouts.main')
+@extends('congtacvientruyen.layouts.main')
 @section('content')
     <p class="mt-3">
-        <a href="{{route('admin.truyenchitiet.create')}}" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
+        <a href="{{route('ctvt.truyenchitiet.create')}}" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
             Nhập từ Excel
         </button>
-        <a href="{{ route('admin.truyenchitiet.xuat') }}" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
+        <a href="{{ route('ctvt.truyenchitiet.xuat') }}" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
             ra Excel</a>
-        <a href="{{ route('admin.truyenchitiet.hinh') }}" class="btn btn-danger"><i class="fa-light fa-download"></i> Xuất
+        <a href="{{ route('ctvt.truyenchitiet.hinh') }}" class="btn btn-danger"><i class="fa-light fa-download"></i> Xuất
             ra hình ảnh</a>
     </p>
     <table id="tabletruyen" class="table text-center">
@@ -32,10 +32,10 @@
                         <td>{{ $truyenchitiet->updated_at }}</td>
                         <td>
                             <a class="btn btn-primary btn-sm"
-                                href="{{ route('admin.truyenchitiet.edit', [$truyenchitiet]) }}"><i
+                                href="{{ route('ctvt.truyenchitiet.edit', [$truyenchitiet]) }}"><i
                                     class="fas fa-edit"></i></a>
                             <form onclick="return confirm('Bạn có muốn xóa không?');" class="d-inline-block"
-                                action="{{ route('admin.truyenchitiet.destroy', [$truyenchitiet]) }}" method="post">
+                                action="{{ route('ctvt.truyenchitiet.destroy', [$truyenchitiet]) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i> </button>
@@ -51,7 +51,7 @@
         </tbody>
     </table>
 
-    <form action="{{ route('admin.truyenchitiet.nhap') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('ctvt.truyenchitiet.nhap') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="modal fade" id="modal-default" style="display: none;" tabindex="-1" role="dialog"
             aria-labelledby="importModalLabel" aria-hidden="true">

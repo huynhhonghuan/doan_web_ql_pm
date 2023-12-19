@@ -2,7 +2,7 @@
     <a href="{{route('ctvt.home')}}" class="brand-link">
         <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
             class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">OkynaWa</span>
+        <span class="brand-text font-weight-light">{{Auth::user()->name}}</span>
     </a>
 
     <div class="sidebar">
@@ -50,6 +50,24 @@
                             <a href="{{route('ctvt.truyen.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm mới truyện</p>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-bars"></i>
+                        <p>
+                            Chi Tiết Truyện
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('ctvt.truyenchitiet.index')}}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách chi tiết truyện</p>
                             </a>
                         </li>
                     </ul>

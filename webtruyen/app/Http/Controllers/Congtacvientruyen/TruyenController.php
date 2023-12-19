@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Congtacvientruyen;
 
+use App\Exports\Congtacvientruyen\TruyenExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Congtacvientruyen\TruyenRequest;
-
+use App\Imports\Congtacvientruyen\TruyenImport;
 use App\Models\QuocGia;
 use App\Models\TacGia;
 use App\Models\TheLoai;
@@ -14,6 +15,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
+use ZipArchive;
 
 class TruyenController extends Controller
 {
@@ -144,5 +147,68 @@ class TruyenController extends Controller
         $truyen->delete();
 
         return redirect()->route('ctvt.truyen.index');
+    }
+    //nhâp excel
+    public function postNhap(Request $request)
+    {
+        Excel::import(new TruyenImport, $request->file('file_excel'));
+
+        if ($file = $request->file('hinhanh')) {
+
+            //$thumuc = [];
+            foreach ($file as $hinhanh) {
+
+                //lấy thông tin truyện từ hình tên hình ảnh
+                //nếu tên hình ảnh trùng với tên hình ảnh được lưu trong db thì lấy thông tin truyện đó
+                $truyen = Truyen::where('hinhanh', $hinhanh->getClientOriginalName())->first();
+
+                //nếu thông tin chuyện khác null
+                if ($truyen != null) {
+                    //Tạo thư mục nếu chưa có
+                    //dd(!File::isDirectory(public_path('image/truyen/' . $truyen->slug)));
+                    if (!File::isDirectory(public_path('image/truyen/' . $truyen->slug))) {
+                        File::makeDirectory(public_path('image/truyen/' . $truyen->slug), true);
+                    }
+                    //nếu hình ảnh chưa có thì thêm ảnh đó vào thư mục
+                    if (!File::exists(public_path('image/truyen/' . $truyen->slug . '/' . $truyen->hinhanh))) {
+                        $hinhanh->move('image/truyen/' . $truyen->slug, $hinhanh->getClientOriginalName());
+                    }
+                }
+            }
+        }
+
+        return redirect()->route('ctvt.truyen.index');
+    }
+
+    //xuất excel
+    public function getXuat()
+    {
+        return Excel::download(new TruyenExport, 'danh-sach-truyen.xlsx');
+    }
+
+    //xuất tất cả hình ảnh ra file zip
+    public function getHinh()
+    {
+        $zip = new ZipArchive();
+        $file_name = 'truyen.zip';
+
+        //xóa thư mục truyen.zip nếu đã có trước đó
+        if (file_exists(public_path('image/truyen.zip')))
+            File::deleteDirectory(public_path('image/truyen.zip'));
+
+        $truyen = Truyen::all();
+        if ($zip->open(public_path('image/' . $file_name), ZipArchive::CREATE) === True) {
+
+            foreach ($truyen as $tr) {
+                $files = File::files(public_path('image/truyen/' . $tr->slug));
+
+                foreach ($files as $item) {
+                    $zip->addFile($item, basename($item));
+                }
+            }
+
+            $zip->close();
+        }
+        return response()->download(public_path('image/' . $file_name));
     }
 }

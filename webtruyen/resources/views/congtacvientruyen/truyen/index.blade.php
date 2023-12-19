@@ -1,11 +1,17 @@
 @extends('congtacvientruyen.layouts.main')
 @section('content')
     <p class="pt-3">
-        <!-- <a href="" class="btn btn-info"><i class="fa-light fa-plus"></i> Thêm mới</a> -->
-        <a href="" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#importModal"><i
-                class="fa-light fa-upload"></i> Nhập từ Excel</a>
-        <a href="" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
+    <a href="{{ route('ctvt.truyen.create') }}" class="btn btn-warning"><i class="fa-light fa-plus"></i> Thêm mới</a>
+
+    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#modal-default">
+            Nhập từ Excel
+        </button>
+
+        <a href="{{ route('ctvt.truyen.xuat') }}" class="btn btn-success"><i class="fa-light fa-download"></i> Xuất
             ra Excel</a>
+
+        <a href="{{ route('ctvt.truyen.hinh') }}" class="btn btn-danger"><i class="fa-light fa-download"></i> Xuất
+            ra hình ảnh</a>
     </p>
     <table id="tabletruyen" class="table text-center">
         <thead>

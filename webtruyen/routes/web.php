@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\TruyenController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Congtacvientruyen\CongTacVienTruyenController;
 use App\Http\Controllers\Congtacvientruyen\TruyenController as ctv_truyen;
+use App\Http\Controllers\Congtacvientruyen\TruyenChiTietController as ctv_truyenct;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -87,8 +88,19 @@ Route::group(['middleware' => ['auth', 'ctvt'], 'prefix' => 'ctvt', 'as' => 'ctv
     //home ctvt
     Route::get('/', [CongTacVienTruyenController::class, 'home'])->name('home');
     Route::get('home', [CongTacVienTruyenController::class, 'home'])->name('home');
+    
     //danh mục truyện ctv
     Route::resource('truyen', ctv_truyen::class)->except('show');
+    Route::post('truyen/nhap', [ctv_truyen::class, 'postNhap'])->name('truyen.nhap'); //nhập excel
+    Route::get('truyen/xuat', [ctv_truyen::class, 'getXuat'])->name('truyen.xuat'); //xuất excel
+    Route::get('truyen/hinh', [ctv_truyen::class, 'getHinh'])->name('truyen.hinh'); //xuất hình file.zip
+   
+    //chi tiết truyện
+    Route::resource('truyenchitiet', ctv_truyenct::class)->except('show');
+    Route::post('truyenchitiet/nhap', [ctv_truyenct::class, 'postNhap'])->name('truyenchitiet.nhap'); //nhập excel
+    Route::get('truyenchitiet/xuat', [ctv_truyenct::class, 'getXuat'])->name('truyenchitiet.xuat'); //xuất excel
+    Route::get('truyenchitiet/hinh', [ctv_truyenct::class, 'getHinh'])->name('truyenchitiet.hinh'); //xuất hình file.zip
+    
 });
 
 //Người dùng
