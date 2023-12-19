@@ -118,7 +118,8 @@ class TruyenController extends Controller
             }
             if ($file = $request->file('hinhanh')) {
                 //xóa ảnh cũ nằm trong thư mục
-                unlink(public_path('image/truyen/' . $truyen->slug . '/' . $truyen->hinhanh));
+                if(File::exists(public_path('image/truyen/' . $truyen->slug . '/' . $truyen->hinhanh)))
+                    unlink(public_path('image/truyen/' . $truyen->slug . '/' . $truyen->hinhanh));
 
                 //thêm ảnh mới vào
                 $ext = $request->file('hinhanh')->extension();
