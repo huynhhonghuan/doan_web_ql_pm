@@ -16,13 +16,13 @@ class TaiKhoanImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new User([
-            
+
                 'name'=> $row['name'],
                 'username'=> $row['username'],
                 'sdt'=> $row['sdt'],
                 'email'=> $row['email'],
                 'password'=> $row['password'],
-                
+
         ]);
     }
     public function headingRow(): int

@@ -23,6 +23,8 @@ return new class extends Migration
 
         DB::table('quocgia')->insert([
             ['tenquocgia' => 'Việt Nam', 'slug' => 'viet-nam', 'mota' => 'Khu vực châu Á - Thái Bình Dương'],
+            ['tenquocgia' => 'Nhật Bản', 'slug' => 'nhat-ban', 'mota' => 'Khu vực châu Á - Thái Bình Dương'],
+            ['tenquocgia' => 'Hàn quốc', 'slug' => 'han-quoc', 'mota' => 'Khu vực châu Á - Thái Bình Dương'],
         ]);
     }
 

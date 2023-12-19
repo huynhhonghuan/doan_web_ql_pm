@@ -22,6 +22,10 @@ return new class extends Migration
         });
         DB::table('theloai')->insert([
             ['tentheloai' => 'Manga', 'slug' => 'manga', 'mota' => 'Thể loại Manga'],
+            ['tentheloai' => 'Action', 'slug' => 'action', 'mota' => 'Thể loại Action'],
+            ['tentheloai' => 'Chuyển sinh', 'slug' => 'chuyen-sinh', 'mota' => 'Thể loại chuyển sinh'],
+            ['tentheloai' => 'Đam mỹ', 'slug' => 'dam-my', 'mota' => 'Thể loại đam mỹ'],
+
         ]);
     }
 
