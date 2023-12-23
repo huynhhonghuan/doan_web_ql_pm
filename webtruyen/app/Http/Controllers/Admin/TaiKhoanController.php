@@ -63,7 +63,7 @@ class TaiKhoanController extends Controller
      */
     public function show(string $id)
     {
-        //
+
     }
 
     /**
@@ -83,7 +83,7 @@ class TaiKhoanController extends Controller
     {
         if ($request->validated()) {
             $username = Str::before($request->email, '@');
-            $status = $request->status ?? 'actve';
+            $status = $request->status ?? 'active';
 
             //dd($request->change_password_checkbox);
             $taikhoan->update($request->validated() + [
@@ -109,8 +109,21 @@ class TaiKhoanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $taikhoan)
     {
+        //dd($taikhoan);
+        // $taikhoan->update([
+        //     'status' => 'inactive',
+        // ]);
+        // return redirect()->route('admin.taikhoan.index');
+    }
+
+    public function getKhoa($id)
+    {
+        $user = User::find($id);
+        $user->status = 'inactive';
+        $user->save();
+        return redirect()->route('admin.taikhoan.index');
     }
 
     public function getXuat()

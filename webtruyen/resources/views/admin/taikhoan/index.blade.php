@@ -41,12 +41,8 @@
                         <td>
                             <a class="btn btn-primary btn-sm" href="{{ route('admin.taikhoan.edit', [$taikhoan]) }}"><i
                                     class="fas fa-edit"></i></a>
-                            <form onclick="return confirm('Bạn có muốn xóa không?');" class="d-inline-block"
-                                action="{{ route('admin.taikhoan.destroy', [$taikhoan]) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <button class="btn btn-sm btn-danger"> <i class="fa fa-trash"></i> </button>
-                            </form>
+                            <a onclick="return confirm('Bạn có muốn khoá tài khoản?')" href="{{route('admin.taikhoan.khoa',[$taikhoan->id])}}"> <i
+                                    class="fa fa-trash"></i> </a>
                         </td>
                     </tr>
                 @endforeach

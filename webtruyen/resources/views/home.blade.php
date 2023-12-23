@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('trangchu.layout')
 
 @section('content')
 <div class="container">

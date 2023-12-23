@@ -14,6 +14,7 @@ use App\Http\Controllers\Congtacvientruyen\TruyenChiTietController as ctv_truyen
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Trangchu\TrangChuController;
 use App\Models\TruyenChiTiet;
 
 /*
@@ -27,13 +28,10 @@ use App\Models\TruyenChiTiet;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.users.login');
-});
+Route::get('/', [TrangChuController::class, 'home'])->name('home');
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 //-------------------------------------Login--------------------------------------------//
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -41,6 +39,11 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'login_xuly']);
 //-------------------------------------Logout--------------------------------------------//
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//Trang chu
+Route::get('/home', [TrangChuController::class, 'home'])->name('home');
+Route::get('/truyen/{id}',[TrangChuController::class,'getTruyen'])->name('truyen');
+Route::get('/truyen/{id}/{chuong}',[TrangChuController::class,'getTruyenChiTiet'])->name('truyenchitiet');
 
 //Admin
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -50,9 +53,10 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin', 'as' => 'a
     Route::get('home', [AdminController::class, 'home'])->name('home');
 
     //tài khoản
-    Route::resource('taikhoan',TaiKhoanController::class)->except('show');
+    Route::resource('taikhoan', TaiKhoanController::class)->except('show');
     Route::get('taikhoan/xuat', [TaiKhoanController::class, 'getXuat'])->name('taikhoan.xuat');
     Route::post('taikhoan/nhap', [TaiKhoanController::class, 'postNhap'])->name('taikhoan.nhap');
+    Route::get('taikhoan/khoa/{id}', [TaiKhoanController::class, 'getKhoa'])->name('taikhoan.khoa');
 
     //truyện
     Route::resource('truyen', TruyenController::class)->except('show');

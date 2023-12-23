@@ -47,7 +47,6 @@ class TruyenController extends Controller
      */
     public function store(TruyenRequest $request)
     {
-
         if ($request->validated()) {
 
             $slug = Str::slug($request->tentruyen, '-');
@@ -75,7 +74,6 @@ class TruyenController extends Controller
                 'user_id' => Auth::user()->id,
             ]);
         }
-
         return redirect()->route('admin.truyen.index');
     }
 
